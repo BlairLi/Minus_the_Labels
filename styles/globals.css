@@ -108,7 +108,7 @@ a {
 
 .background-image {
   /* Full screen background image will cover the entire viewport */
-  background: url('../img/np_file_13750.jpeg') no-repeat center center fixed; 
+  background: url('/img/np_file_13750.jpeg') no-repeat center center fixed; 
   /* Scale the background image to cover the entire container */
   background-size: cover;
   /* Set height and width if necessary, this example uses full viewport height */
@@ -163,4 +163,21 @@ body {
   font-family: "Special Elite", system-ui;
   font-weight: 400;
   font-style: normal;
+}
+
+.no-gap .column {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.figure-img {
+  width: 20rem;
+  height: 20rem;
+  object-fit: cover;
+}
+
+
+.figure {
+  text-align: center;
+  line-height: 0;  
 }

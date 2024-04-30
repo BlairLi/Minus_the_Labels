@@ -12,7 +12,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         <title>Minus The Labels</title>
         <meta name="description" content="Minus The Labels" />
       </Head>
+      <NavBar />
         <Component {...pageProps} />
+      <Footer />
       {/* </SessionProvider> */}
     </div>
   );
