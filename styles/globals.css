@@ -171,13 +171,54 @@ body {
 }
 
 .figure-img {
-  width: 20rem;
   height: 20rem;
   object-fit: cover;
+  width: 100%;
 }
 
+.event-img{
+  width: 25rem;
+  height: 25rem;
+  object-fit: cover;
+}
 
 .figure {
   text-align: center;
   line-height: 0;  
+}
+
+.menuItem {
+  position: relative;
+  display: inline-block;
+  width: 20rem;
+  height: 5rem;
+  line-height: 5rem;
+  overflow: hidden;
+  /* background-color: cadetblue; */
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.menuItem span {
+  position: absolute;
+  white-space: nowrap;
+  display: inline-block;
+  animation: scrollItem 4.5s linear infinite;
+}
+
+@keyframes scrollItem {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+.alternate-font {
+  font-family: 'Times New Roman', serif; /* Alternate font */
+}
+
+.alternate2-font {
+  font-family: Arial, sans-serif; /* Default web font */
 }

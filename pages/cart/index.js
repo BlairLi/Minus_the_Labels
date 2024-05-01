@@ -1,84 +1,53 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-class ShoppingCart {
-    constructor() {
-        this.items = [];
-    }
-
-    addItem(item) {
-        this.items.push(item);
-    }
-
-    removeItem(item) {
-        const index = this.items.indexOf(item);
-        if (index > -1) {
-            this.items.splice(index, 1);
-        }
-    }
-
-    getTotalPrice() {
-        let totalPrice = 0;
-        for (const item of this.items) {
-            totalPrice += item.price;
-        }
-        return totalPrice;
-    }
-}
-
-// Usage example
-const cart = new ShoppingCart();
-
-// Add items to the cart
-const item1 = { name: 'Product 1', price: 10 };
-const item2 = { name: 'Product 2', price: 20 };
-cart.addItem(item1);
-cart.addItem(item2);
-
-// Remove an item from the cart
-cart.removeItem(item1);
-
-// Get the total price of the cart
-const totalPrice = cart.getTotalPrice();
-console.log('Total Price:', totalPrice);
-export default function CartPage() {
+export default function CartPage({ item, updateQuantity, removeFromCart }) {
     const [cartItems, setCartItems] = useState([]);
 
-    // const addItemToCart = (item) => {
-    //     setCartItems((prevItems) => [...prevItems, item]);
-    // };
-
-    // const removeItemFromCart = (item) => {
-    //     const updatedCartItems = cartItems.filter((cartItem) => cartItem !== item);
-    //     setCartItems(updatedCartItems);
-    // };
-
-    const getTotalPrice = () => {
-        let totalPrice = 0;
-        for (const item of cartItems) {
-            totalPrice += item.price;
-        }
-        return totalPrice;
+    const addItemToCart = (item) => {
+        setCartItems((prevItems) => [...prevItems, item]);
     };
 
-    // Usage example
-    const item1 = { name: 'Product 1', price: 10 };
-    const item2 = { name: 'Product 2', price: 20 };
+    const removeItemFromCart = (item) => {
+        setCartItems((prevItems) => prevItems.filter((cartItem) => cartItem !== item));
+    };
 
-    // addItemToCart(item1);
-    // addItemToCart(item2);
-    // removeItemFromCart(item1);
+    const getTotalPrice = () => {
+        return cartItems.reduce((total, item) => total + item.price, 0);
+    };
 
-    const totalPrice = getTotalPrice();
+    useEffect(() => {
+        console.log('item:', item);
+    }, [item]);
 
     return (
         <div>
-            <h1>Shopping Cart</h1>
-            <ul>
+            <section className="hero is-medium">
+                <div className="hero-body">
+                    <p className="title">Shopping Cart</p>
+                </div>
+            </section>
+            {/* <ul>
                 {cartItems.map((item, index) => (
-                    <li key={index}>{item.name}</li>
+                    <li key={index}>
+                        {item.name} - ${item.price}
+                        <button onClick={() => removeItemFromCart(item)}>Remove</button>
+                    </li>
                 ))}
-            </ul>
-            <p>Total Price: {totalPrice}</p>
+            </ul> */}
+            <button onClick={() => addItemToCart({ name: 'Product 1', price: 10 })}>Add Product 1</button>
+            <button onClick={() => addItemToCart({ name: 'Product 2', price: 20 })}>Add Product 2</button>
+            <p>Total Price: ${getTotalPrice()}</p>
+            <div className="cart-item">
+                {/* <img src={item.image} alt={item.name} style={{ width: '50px', height: '50px' }} /> */}
+                {/* <span>{item.name}</span> */}
+                <input 
+                    type="number" 
+                    // value={item.quantity} 
+                    onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))} 
+                />
+                {/* <span>${item.price}</span> */}
+                <button onClick={() => removeFromCart(item.id)}>Remove</button>
+            </div>
         </div>
     );
 }

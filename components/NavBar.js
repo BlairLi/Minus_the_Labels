@@ -3,7 +3,28 @@ const NavBar = () => {
       <>
         <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-item navbar-center">
-            <h2 className="navbar-item">Minus The Labels</h2>
+            <h2 className="navbar-item menuItem">
+                <span className="columns">
+                    <div className="column">
+                        Minus The Labels
+                    </div>
+                    <div className="column alternate-font">
+                        Minus The Labels
+                    </div>
+                    <div className="column alternate2-font">
+                        Minus The Labels
+                    </div>
+                    <div className="column">
+                        Minus The Labels
+                    </div>
+                    <div className="column alternate-font">
+                        Minus The Labels
+                    </div>
+                    <div className="column alternate2-font">
+                        Minus The Labels
+                    </div>
+                </span>
+            </h2>
           </div>
           <div className="navbar-end">
             <div className="navbar-item">
