@@ -1,53 +1,72 @@
+import { getCart, removeItem } from '../../contexts/cartHelpers';
 import { useState, useEffect } from 'react';
 
-export default function CartPage({ item, updateQuantity, removeFromCart }) {
-    const [cartItems, setCartItems] = useState([]);
-
-    const addItemToCart = (item) => {
-        setCartItems((prevItems) => [...prevItems, item]);
-    };
-
-    const removeItemFromCart = (item) => {
-        setCartItems((prevItems) => prevItems.filter((cartItem) => cartItem !== item));
-    };
-
-    const getTotalPrice = () => {
-        return cartItems.reduce((total, item) => total + item.price, 0);
-    };
+export default function CartPage() {
+    const [items, setItems] = useState([]);
+    const [run, setRun] = useState(false);
 
     useEffect(() => {
-        console.log('item:', item);
-    }, [item]);
+        setItems(getCart());
+    }, []);
+
+    const removeTickets = (productId) => {
+        removeItem(productId);
+        setItems(getCart());
+    }
+    
+    const showItems = (items) => {
+        return (
+          <div>
+            {/* <h2>Your cart has {`${items.length}`} items</h2> */}
+            <div>
+                <div className='columns'>
+                    <div className='column'></div>
+                    <div className='column'>Event Name</div>
+                    <div className='column'>Ticket Number</div>
+                    <div className="column"></div>
+                </div>
+                {items.map((product, i) => (
+                    <div className='columns' key={i}>
+                        <div className='column ml-3'>
+                            <img style={{ width: "12rem", height: "12rem" }} src={`/img/${product.item}.jpeg`} alt={product.item} />
+                        </div>
+                        <div className='column'>{product.item}</div>
+                        <div className='column'>{product.count}</div>
+                        <div className="column">
+                            <button className="button is-rounded is-danger" onClick={() => removeTickets(product.item)}>Remove Ticket</button>
+                        </div>
+                    </div>
+                ))}
+            </div>
+          </div>
+        );
+    };
+
+    const noItemsMessage = () => (
+    <h2>
+        Your cart is empty. <br /> <a to='/'>Continue shopping</a>
+    </h2>
+    );
 
     return (
         <div>
-            <section className="hero is-medium">
+            <section className="hero mt-6 is-small">
                 <div className="hero-body">
                     <p className="title">Shopping Cart</p>
                 </div>
+                <div className="columns">
+                    <div className="column is-four-fifths">
+                        {items.length > 0 ? showItems(items) : noItemsMessage()}
+                    </div>
+                    
+                    <div className='column'>
+                        <h2 className='mb-4'>Your cart summary</h2>
+                        <hr />
+                        {/* TODO Checkout */}
+                        {/* <Checkout products={items} setRun={setRun} run={run} /> */}
+                    </div>
+                </div>
             </section>
-            {/* <ul>
-                {cartItems.map((item, index) => (
-                    <li key={index}>
-                        {item.name} - ${item.price}
-                        <button onClick={() => removeItemFromCart(item)}>Remove</button>
-                    </li>
-                ))}
-            </ul> */}
-            <button onClick={() => addItemToCart({ name: 'Product 1', price: 10 })}>Add Product 1</button>
-            <button onClick={() => addItemToCart({ name: 'Product 2', price: 20 })}>Add Product 2</button>
-            <p>Total Price: ${getTotalPrice()}</p>
-            <div className="cart-item">
-                {/* <img src={item.image} alt={item.name} style={{ width: '50px', height: '50px' }} /> */}
-                {/* <span>{item.name}</span> */}
-                <input 
-                    type="number" 
-                    // value={item.quantity} 
-                    onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))} 
-                />
-                {/* <span>${item.price}</span> */}
-                <button onClick={() => removeFromCart(item.id)}>Remove</button>
-            </div>
         </div>
     );
 }
