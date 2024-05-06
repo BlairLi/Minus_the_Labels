@@ -56,8 +56,8 @@ export default function EventPage() {
     return (
         // <div>
         <div className="background-image">
-            <section className="hero is-medium mt-6">
-                <div className="hero-body columns is-vcentered">
+            <section className="hero is-medium">
+                <div className="hero-body columns is-vcentered mt-6">
                     <div className="column has-text-right">
                         <img className="event-img" src={`/img/Events/${events}.jpeg`} alt={`${events}`} />
                     </div>

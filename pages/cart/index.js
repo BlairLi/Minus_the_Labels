@@ -61,8 +61,8 @@ export default function CartPage() {
 
     return (
         <div className='background-image'>
-            <section className="hero mt-6 is-small">
-                <div className="hero-body">
+            <section className="hero is-small">
+                <div className="hero-body mt-6">
                     <p className="title">Shopping Cart</p>
                 </div>
                 <div className="columns">

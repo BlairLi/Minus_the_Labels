@@ -7,8 +7,8 @@ export default function Home() {
     <div>
       <main>
         <div className="background-image">
-          <section className="hero is-medium mt-6">
-            <div className="hero-body">
+          <section className="hero is-medium ">
+            <div className="hero-body mt-6">
               <div className="columns is-centered" >
                 <div className="column scroll-container is-6" >
                   {events.map((event, index) => (
