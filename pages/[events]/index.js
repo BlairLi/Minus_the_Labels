@@ -16,7 +16,7 @@ export default function EventPage() {
 
     // Countdown function
     useEffect(() => {
-        const targetDate = new Date("2024-01-01T00:00:00"); // Set your target countdown date
+        const targetDate = new Date("2025-01-01T00:00:00"); // Set your target countdown date
         const interval = setInterval(() => {
             const now = new Date();
             const difference = targetDate - now;
@@ -54,19 +54,23 @@ export default function EventPage() {
     };
 
     return (
-        <div>
-            <section className="hero is-large has-background-white-ter">
+        // <div>
+        <div className="background-image">
+            <section className="hero is-medium mt-6">
                 <div className="hero-body columns is-vcentered">
                     <div className="column has-text-right">
-                        <img className="event-img" src={`/img/${events}.jpeg`} alt={`${events}`} />
+                        <img className="event-img" src={`/img/Events/${events}.jpeg`} alt={`${events}`} />
                     </div>
                     <div className="column is-6">
                         <p className="title">{events}</p>
-                        <div id="timer">
-                            <span>{timeLeft.days}</span> days,
+                        <div id="timer" className="p-1 timer-dashed">
+                            {/* <span>{timeLeft.days}</span> days,
                             <span>{timeLeft.hours}</span> hours,
                             <span>{timeLeft.minutes}</span> minutes,
-                            <span>{timeLeft.seconds}</span> seconds
+                            <span>{timeLeft.seconds}</span> seconds */}
+                            <span className="">{timeLeft.hours}</span> : 
+                            <span> {timeLeft.minutes}</span> :
+                            <span> {timeLeft.seconds}</span>
                         </div>
                         <p className="subtitle">
                             Events Description lorem ipsum dolor sit amet, consectetur lorem lorem ipsum dolor sit amet, consectetur lorem
