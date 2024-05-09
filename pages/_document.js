@@ -15,6 +15,7 @@ class MyDocument extends Document {
             <link rel="preconnect" href="https://fonts.googleapis.com"/>
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
             <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet"/>
+            <script async src="https://js.stripe.com/v3/buy-button.js"> </script>
         </Head>
         <body>
           <Main />

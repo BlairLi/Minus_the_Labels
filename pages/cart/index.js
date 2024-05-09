@@ -1,5 +1,6 @@
 import { getCart, removeItem, updateItem } from '../../contexts/cartHelpers';
 import { useState, useEffect } from 'react';
+import StripeContainer from '../../components/StripeContainer';
 
 export default function CartPage() {
     const [items, setItems] = useState([]);
@@ -60,8 +61,9 @@ export default function CartPage() {
     );
 
     return (
-        <div className='background-image'>
-            <section className="hero is-small">
+        <div className=''>
+        {/* <div className='background-image'> */}
+            <section className="hero is-small mt-6">
                 <div className="hero-body mt-6">
                     <p className="title">Shopping Cart</p>
                 </div>
@@ -73,6 +75,11 @@ export default function CartPage() {
                     <div className='column'>
                         <h2 className='mb-4'>Your cart summary</h2>
                         <hr />
+                
+                        <StripeContainer/>
+                        <button className="button is-rounded is-primary mt-4">
+                            <a href='https://buy.stripe.com/test_bIY3eqeVc0Tkeze3ch'>Checkout</a>
+                        </button>
                         {/* TODO Checkout */}
                         {/* <Checkout products={items} setRun={setRun} run={run} /> */}
                     </div>

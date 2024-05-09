@@ -7,10 +7,10 @@ export default function Home() {
     <div>
       <main>
         <div className="background-image">
-          <section className="hero is-medium ">
-            <div className="hero-body mt-6">
+          <section className="hero is-large ">
+            <div className="hero-body">
               <div className="columns is-centered" >
-                <div className="column scroll-container is-6" >
+                <div className="scroll-container" >
                   {events.map((event, index) => (
                     <div key={index} className="column event-item m-0 p-0">
                       <a href={`/${event}`}>
